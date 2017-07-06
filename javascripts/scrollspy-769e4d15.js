@@ -1,0 +1,6 @@
+/*!
+ * jQuery Scrollspy Plugin
+ * Author: @sxalexander
+ * Licensed under the MIT license
+ */
+!function(t,e,n,i){t.fn.extend({scrollspy:function(n){var i={min:0,max:0,mode:"vertical",buffer:0,container:e,onEnter:n.onEnter?n.onEnter:[],onLeave:n.onLeave?n.onLeave:[],onTick:n.onTick?n.onTick:[]},n=t.extend({},i,n);return this.each(function(e){var i=this,r=n,o=t(r.container),s=r.mode,a=r.buffer,u=leaves=0,l=!1;o.bind("scroll",function(e){var n={top:t(this).scrollTop(),left:t(this).scrollLeft()},c="vertical"==s?n.top+a:n.left+a,h=r.max,d=r.min;t.isFunction(r.max)&&(h=r.max()),t.isFunction(r.min)&&(d=r.min()),0==h&&(h="vertical"==s?o.height():o.outerWidth()+t(i).outerWidth()),c>=d&&h>=c?(l||(l=!0,u++,t(i).trigger("scrollEnter",{position:n}),t.isFunction(r.onEnter)&&r.onEnter(i,n)),t(i).trigger("scrollTick",{position:n,inside:l,enters:u,leaves:leaves}),t.isFunction(r.onTick)&&r.onTick(i,n,l,u,leaves)):l&&(l=!1,leaves++,t(i).trigger("scrollLeave",{position:n,leaves:leaves}),t.isFunction(r.onLeave)&&r.onLeave(i,n))})})}})}(jQuery,window);
